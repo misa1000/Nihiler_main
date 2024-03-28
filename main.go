@@ -19,7 +19,7 @@ func main() {
 		protected.POST("/query/:id", handles.UserQuery)
 		protected.POST("/owner/:id/:visible_VIP", handles.UserOwner)
 		protected.POST("/another/:id/:visible_another", handles.UserAnother)
-		protected.POST("/query/:id/:visible_another", handles.UserAnother)
+		protected.POST("/create_Delay", handles.Create_CelayDelete)
 	}
 	engine.GET("/:id", handles.Query)
 	engine.POST("/create", handles.Create)

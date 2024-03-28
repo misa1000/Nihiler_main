@@ -9,7 +9,7 @@ func main() {
 	engine := gin.Default()
 	user := engine.Group("/user")
 	user.POST("/register/:username/:password", handles.Register)
-	user.POST("/login/:username/:paassword", handles.Login)
+	user.POST("/login/:username/:password", handles.Login)
 	protected := engine.Group("/:username") //设置有权限限制的访问路由组
 	protected.Use(handles.User)             //使用中间件检查用户的登陆信息，是实际开发中常见的操作！
 	{

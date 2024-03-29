@@ -2,6 +2,7 @@ package handles
 
 import (
 	"Termbin/DAO"
+	"Termbin/functions"
 	"Termbin/models"
 	"github.com/gin-gonic/gin"
 )
@@ -16,7 +17,7 @@ func Login(c *gin.Context) {
 	models.Db.Where("username=?", username).Find(&a)
 	if a.ID != 0 {
 		c.String(200, "确实存在用户\n")
-		if a.Password == password {
+		if a.Password == functions.Hex(password) {
 			c.String(200, "登陆成功！")
 			Sessions[username] = 1
 		} else {

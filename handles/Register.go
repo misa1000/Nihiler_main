@@ -2,6 +2,7 @@ package handles
 
 import (
 	"Termbin/DAO"
+	"Termbin/functions"
 	"Termbin/models"
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +12,7 @@ func Register(c *gin.Context) {
 	username := c.Param("username")
 	password := c.Param("password")
 	a.Username = username
-	a.Password = password
+	a.Password = functions.Hex(password)
 	DAO.InitSQL_Register()
 	models.Db.Where("username=?", username).Find(&a)
 	if a.ID != 0 {

@@ -22,6 +22,7 @@ type Clipboard_VIP struct {
 	Username        string `gorm:"username"`
 	Visible_VIP     string `gorm:"visible_VIP"`
 	Visible_another string `gorm:"visible_another"`
+	Alias           string `gorm:"alias"`
 }
 
 var Db *gorm.DB

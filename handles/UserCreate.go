@@ -12,6 +12,7 @@ func UserCreate(c *gin.Context) {
 	var b models.Clipboard_VIP //声明一个结构体变量，方便对数据库进行写入操作
 	url := "localhost:888/create/"
 	content := c.PostForm("c")
+	alias := c.Param("alias")
 	username := c.Param("username")
 	a.Context = content
 	a.Digest = functions.Hex(content)
@@ -21,6 +22,7 @@ func UserCreate(c *gin.Context) {
 	a.Username = username
 	a.Visible_VIP = "no"
 	a.Visible_another = "none"
+	a.Alias = alias
 	DAO.InitSQL_VIPs()             //链接数据库
 	result := models.Db.Create(&a) //创建表
 	models.Db.Where("context=?", content).Find(&b)

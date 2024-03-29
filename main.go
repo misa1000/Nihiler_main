@@ -14,9 +14,10 @@ func main() {
 	protected.Use(handles.User)             //使用中间件检查用户的登陆信息，是实际开发中常见的操作！
 	{
 		protected.POST("/create", handles.UserCreate)
+		protected.POST("/create/:alias", handles.UserCreate)
 		protected.POST("/delete/:id", handles.UserDelete)
 		protected.POST("/update/:id", handles.UserUpdate)
-		protected.POST("/query/:id", handles.UserQuery)
+		protected.POST("/query/:interface", handles.UserQuery)
 		protected.POST("/owner/:id/:visible_VIP", handles.UserOwner)
 		protected.POST("/another/:id/:visible_another", handles.UserAnother)
 		protected.POST("/create_Delay", handles.Create_CelayDelete)
